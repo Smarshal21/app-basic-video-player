@@ -7,6 +7,7 @@ import javax.inject.Inject
 class VideoRepositoryImpl @Inject constructor(
     private val apiService: VideoApiService
 ) : VideoRepository {
+    // Fetches video URL from API service
     override suspend fun fetchVideoUrl(): String {
         return apiService.getVideoUrl().videoUrl
     }

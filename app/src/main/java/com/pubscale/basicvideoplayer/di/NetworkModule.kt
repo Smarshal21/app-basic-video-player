@@ -20,13 +20,13 @@ object NetworkModule {
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create()) // Converts JSON responses
             .build()
     }
 
     @Provides
     @Singleton
     fun provideVideoApi(retrofit: Retrofit): VideoApiService {
-        return retrofit.create(VideoApiService::class.java)
+        return retrofit.create(VideoApiService::class.java) // Creates API service
     }
 }

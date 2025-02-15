@@ -14,16 +14,16 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object DataModule {
+
     @Provides
     @Singleton
     fun provideVideoDataSource(videoRepository: VideoRepository): VideoDataSource {
-        return VideoDataSourceImpl(videoRepository)
+        return VideoDataSourceImpl(videoRepository) // Provides data source implementation
     }
 
     @Provides
     @Singleton
     fun provideVideoRepository(apiService: VideoApiService): VideoRepository {
-        return VideoRepositoryImpl(apiService)
+        return VideoRepositoryImpl(apiService) // Provides repository implementation
     }
 }
-
