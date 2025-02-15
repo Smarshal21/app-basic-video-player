@@ -10,6 +10,7 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.media3.common.MediaItem
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.ui.PlayerView
@@ -17,6 +18,7 @@ import com.pubscale.basicvideoplayer.R
 import com.pubscale.basicvideoplayer.presentation.states.VideoScreenState
 import com.pubscale.basicvideoplayer.presentation.viewmodels.VideoViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -46,8 +48,9 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-
-        videoViewModel.fetchVideo()
+        lifecycleScope.launch {
+            videoViewModel.fetchVideo()
+        }
     }
 
     private fun setupPlayer() {
