@@ -17,13 +17,13 @@ object DataModule {
 
     @Provides
     @Singleton
-    fun provideVideoDataSource(videoRepository: VideoRepository): VideoDataSource {
-        return VideoDataSourceImpl(videoRepository) // Provides data source implementation
+    fun provideVideoDataSource(apiService: VideoApiService): VideoDataSource {
+        return VideoDataSourceImpl(apiService) // Provides data source implementation
     }
 
     @Provides
     @Singleton
-    fun provideVideoRepository(apiService: VideoApiService): VideoRepository {
-        return VideoRepositoryImpl(apiService) // Provides repository implementation
+    fun provideVideoRepository(videoDataSource: VideoDataSource): VideoRepository {
+        return VideoRepositoryImpl(videoDataSource) // Provides repository implementation
     }
 }
