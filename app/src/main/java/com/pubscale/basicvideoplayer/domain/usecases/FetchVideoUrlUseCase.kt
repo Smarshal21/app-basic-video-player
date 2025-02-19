@@ -1,10 +1,10 @@
 package com.pubscale.basicvideoplayer.domain.usecases
 
-import com.pubscale.basicvideoplayer.data.service.VideoDataSource
+import com.pubscale.basicvideoplayer.domain.repository.VideoRepository
 import javax.inject.Inject
 
-class FetchVideoUrlUseCase @Inject constructor(private val videoDataSource: VideoDataSource) {
+class FetchVideoUrlUseCase @Inject constructor(private val videoRepository: VideoRepository) {
     suspend fun execute(): String {
-        return videoDataSource.fetchVideoUrl()
+        return videoRepository.fetchVideoUrl()
     }
 }
